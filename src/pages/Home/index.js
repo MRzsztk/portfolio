@@ -1,16 +1,18 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import Mid from "../../components/Mid";
+
 import "./style.css";
 
 export default function Home() {
     return(
-        <>
-            <div>
-                <h1>test heading</h1>
-                <br/>
-                <Link to={"/about"}>Go to About</Link>
-            </div>
-        </>
+        <div className="page">
+            <Navbar />
+            <Mid />
+            <Footer />
+        </div>
     );
 }

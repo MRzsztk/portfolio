@@ -1,0 +1,16 @@
+.footer {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #1A5276;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #D4E6F1;
+}
+
+.gate {
+    height: 20px;
+    padding: 8px;
+}

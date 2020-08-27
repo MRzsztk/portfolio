@@ -1,0 +1,16 @@
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #7FB3D5
+}
+
+.slot-container {
+    width: 90%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
