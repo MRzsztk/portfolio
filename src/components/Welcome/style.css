@@ -1,6 +1,8 @@
 .welcome {
     width: 100%;
     height: 15vh;
-    margin-top: 25px;
+    margin-top: 40px;
     text-align: center;
+    color: #143951;
+    font-size: 1.4em;
 }

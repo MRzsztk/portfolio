@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { GameEngine } from "react-game-engine";
 
 import './index.css';
 import App from './App';

@@ -1,6 +1,6 @@
 .slot {
-    margin: 50px;
-    padding: 10px;
+    margin: 20px;
+    padding: 20px;
     width: 25%;
     height: 20vh;
     display: flex;
@@ -8,10 +8,13 @@
     align-items: center;
     justify-content: space-around;
     background: rgba(212, 230, 241, 0.3);
+    color: #143951;
 }
 
 .slot h3 {
     margin: 0;
+    font-family: 'VT323', monospace;
+    font-size: 1.8em;
  }
 
 .slot p {

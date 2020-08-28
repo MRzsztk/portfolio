@@ -17,7 +17,7 @@ export default function Main () {
            <div className="slot-container">
            <Slot title="coding." text1="I’m a freshly graduated Full Stack Web Developer." pic={Stack1} />
            <Slot title="other stuff." text1="I have also done some electronics along with some ERP stuff." pic={Stack2} />
-           <Slot title="overtime." text1="I love learning new things and I offer some kickass Polish labor!" pic={Muscle} />
+           <Slot title="effectiveness." text1="I love working overtime, learning new things and I offer some kickass Polish labor!" pic={Muscle} />
            </div>
            <div className="game-comtainer">
            <Game />

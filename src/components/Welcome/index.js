@@ -5,8 +5,7 @@ import "./style.css"
 export default function Welcome () {
     return(
        <div className="welcome">
-           <h1>WELCOME.</h1>
-           <p>I'm Gosha<br/>and I know a thing or two about...</p>
+           <p>this is my not very serious portfolio<br/>that might potentially help you hire me (or not hire me). <br/>nevertheless, I had some fun making it.</p>
        </div>
     );
 }
