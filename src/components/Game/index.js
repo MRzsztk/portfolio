@@ -30,7 +30,6 @@ const Game = () => {
           this.caffeine-=0.1;
           this.speed += this.gravity;
           this.y += this.speed;
-          //p5.image(pRun, this.x, this.y, this.width, this.height);
           if (this.y >= height - pRun.height) {
             this.y = height - pRun.height;
             this.jumps = 0;
@@ -51,23 +50,24 @@ const Game = () => {
           }
         }
         drawStats() {
-          p5.line(0, 15, this.caffeine, 15);
+          p5.stroke(21, 67, 96);
+          p5.line(0, 35, this.caffeine*3, 35);
+          p5.noStroke();
+          p5.textFont(VT323);
+          p5.textAlign(p5.LEFT);
+          p5.text('caffeine', 3, 15);
         }
-        drawWords() {
-          p5.fill(0);
-          p5.text('caffeine', 3, 7);
+        drawCoffee() {
+          for (let i=0; i<this.coffees; i++) {
+      p5.image(coffee, 3+i*(coffee.width*0.7+2), 45, coffee.width*0.7, coffee.height*0.7)
+          }
         }
-    //     drawCoffee() {
-    //       for (let i=0; i<this.coffees; i++) {
-    //   p5.image(game.coffee, 3+i*(game.coffee.width*0.7+2), 20, game.coffee.width*0.7, game.coffee.height*0.7)
-    //       }
-    //     }
         useCoffee() {
           if (this.coffees>0) {
             //insulinVialUse.play();
             this.coffees--;
             this.caffeine+=50;
-            //drawCoffee();
+            this.drawCoffee();
           }
         }
       }
@@ -126,10 +126,8 @@ const Game = () => {
         //     message.drawText();
         //   })
           this.player.drawStats();
-        //   this.player.drawCoffee();
-          p5.textAlign(p5.LEFT);
+          this.player.drawCoffee();
           this.player.drawPlayer();
-          this.player.drawWords(width * 0.25);
         }
         endGame(option) {
           p5.noStroke();
@@ -166,7 +164,6 @@ const Game = () => {
           }
     
           //game intro text
-        //   textFont(this.font2);
           p5.textAlign(p5.CENTER, p5.CENTER);
           p5.fill(21, 67, 96);
           if (!drinkCoffee) {
@@ -199,10 +196,12 @@ const Game = () => {
    let coffeeAnimation=[];
    let transformAnimation=[];
    let deadAnimation=[];
+    //font
+    let VT323;
 
 
    p5.preload = () => {
-       //need to preload font
+       VT323 = p5.loadFont('./VT323-Regular.ttf');
        pRun = p5.loadImage('./player/sRun.gif');
        pIdle = p5.loadImage('./player/sIdle.gif');
        pJump = p5.loadImage('./player/sJump.png');
@@ -243,6 +242,7 @@ const Game = () => {
    p5.setup = () => {
      p5.createCanvas(0.9*p5.windowWidth, 200);
      p5.background("#7FB3D5");
+     p5.textFont(VT323);
      round.player.setupPlayer();
      console.log(round.player.y)
      for (let i = 0; i < coffeeData.frames.length; i++) {
@@ -289,15 +289,12 @@ const Game = () => {
            round.player.jump();
          }
          if (p5.keyCode === 67 && playGame) {
-           console.log('use caffeine');
-           console.log('game.player.useCoffee();')
+           console.log('*gulp*');
+           round.player.useCoffee();
          }
    }
-
 };
   
-  
- 
  useEffect(() => {
   new p5(Sketch);
  // eslint-disable-next-line react-hooks/exhaustive-deps
