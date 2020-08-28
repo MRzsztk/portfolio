@@ -1,0 +1,221 @@
+{"frames": [
+    {
+        "name": "frame00",
+        "position": {
+            "x": 0,
+            "y": 0,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame01",
+        "position": {
+            "x": 29,
+            "y": 0,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame02",
+        "position": {
+            "x": 58,
+            "y": 0,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame03",
+        "position": {
+            "x": 87,
+            "y": 0,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame04",
+        "position": {
+            "x": 116,
+            "y": 0,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame05",
+        "position": {
+            "x": 0,
+            "y": 25,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame06",
+        "position": {
+            "x": 29,
+            "y": 25,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame07",
+        "position": {
+            "x": 58,
+            "y": 25,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame08",
+        "position": {
+            "x": 87,
+            "y": 25,
+            "w": 29,
+            "h": 25
+        }
+    },     {
+        "name": "frame09",
+        "position": {
+            "x": 116,
+            "y": 25,
+            "w": 29,
+            "h": 25
+        }
+    },    {
+        "name": "frame10",
+        "position": {
+            "x": 0,
+            "y": 50,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame11",
+        "position": {
+            "x": 29,
+            "y": 50,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame12",
+        "position": {
+            "x": 58,
+            "y": 50,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame13",
+        "position": {
+            "x": 87,
+            "y": 50,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame14",
+        "position": {
+            "x": 116,
+            "y": 50,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame15",
+        "position": {
+            "x": 0,
+            "y": 75,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame16",
+        "position": {
+            "x": 29,
+            "y": 75,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame17",
+        "position": {
+            "x": 58,
+            "y": 75,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame18",
+        "position": {
+            "x": 87,
+            "y": 75,
+            "w": 29,
+            "h": 25
+        }
+    },   {
+        "name": "frame19",
+        "position": {
+            "x": 116,
+            "y": 75,
+            "w": 29,
+            "h": 25
+        }
+    }, {
+        "name": "frame20",
+        "position": {
+            "x": 0,
+            "y": 100,
+            "w": 29,
+            "h": 25
+        }
+    }, {
+        "name": "frame21",
+        "position": {
+            "x": 29,
+            "y": 100,
+            "w": 29,
+            "h": 25
+        }
+    }, {
+        "name": "frame22",
+        "position": {
+            "x": 58,
+            "y": 100,
+            "w": 29,
+            "h": 25
+        }
+    }, {
+        "name": "frame23",
+        "position": {
+            "x": 87,
+            "y": 100,
+            "w": 29,
+            "h": 25
+        }
+    }, {
+        "name": "frame24",
+        "position": {
+            "x": 116,
+            "y": 100,
+            "w": 29,
+            "h": 25
+        }
+    }, {
+        "name": "frame25",
+        "position": {
+            "x": 0,
+            "y": 125,
+            "w": 29,
+            "h": 25
+        }
+    }, {
+        "name": "frame26",
+        "position": {
+            "x": 29,
+            "y": 125,
+            "w": 29,
+            "h": 25
+        }
+    }
+
+]
+}
