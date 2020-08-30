@@ -3,6 +3,39 @@ import * as p5 from "p5";
  
 const Game = () => {
  const Sketch = p5 => {
+   //class collision text
+   class CollisionText {
+    constructor(object, message) {
+        this.object=object;
+        this.x = round.player.x;
+        this.y = round.player.y-10;
+        this.text=message;
+        this.fade = 255;
+        this.fadeAmount = 1;
+      }
+      drawText() {
+          if (this.y>-15) {
+              this.y-=1.5;
+              //this.x-=0.5;
+          }
+          if (this.fade<0) {
+              this.fadeAmount=2;
+          }
+          if (this.fade>255) {
+              this.fadeAmount=-10;
+          }
+          this.fade -= this.fadeAmount; 
+          if (this.object==='coin') {
+            p5.fill(21, 67, 96, this.fade)
+          } else if (this.object==='stapler') {
+            p5.fill(179, 0, 0, this.fade)
+          } else {
+            p5.fill(24, 120, 5, this.fade)
+          }
+          p5.text(this.text, this.x, this.y);
+      }
+}  
+
   //class Obstacle
   class Obstacle {
     constructor(y, index) {
@@ -10,11 +43,13 @@ const Game = () => {
       this.y = y;
       this.frames = 0;
       this.item=objectArray[index];
+      this.points = this.item.points;
       this.message=this.item.message;
       this.name=this.item.name;
       this.img = this.item.img;
       this.width = this.img.width || 25;
       this.height = this.img.height || 25;
+      this.alpha = 255;
     }
     checkCollisionXY() {
       let leftSide = this.x-5;
@@ -42,17 +77,38 @@ const Game = () => {
       }
     }
     drawObstacle() {
-      this.x -= 3;
-      // this.yMod=1;
-      // if (p5.frameCount%30<15) {
-      //   this.yMod=-1;
-      // } else {this.yMod=1}
-      // this.y+=this.yMod;
-      if (this.name==='coin') {
-        p5.image(this.img[Math.floor(this.frames/3)%4], this.x, this.y, this.width, this.height);
-        this.frames++;
+      if (!round.over) {
+        this.x -= 5;
+        this.yMod=0;
+          if (this.frames%20<10) {
+            this.yMod=-(10-this.frames%20);
+          } else {
+            this.yMod=20-this.frames%20;
+          }
+        if (this.name==='coin' || this.name==='react') {
+          this.y+=0.1*this.yMod;
+          p5.image(this.img[Math.floor(this.frames/3)%4], this.x, this.y, 25, 25);
+          this.frames++;
+        } else if (this.name==='stapler') {
+            this.x-=7; 
+            //this.y+=0.05*this.yMod;
+            p5.image(this.img, this.x, this.y, this.width, this.height);
+            //this.frames++;
+        } else {
+          this.y+=0.15*this.yMod;
+          p5.image(this.img, this.x, this.y, this.width, this.height);
+          this.frames++;
+        }
+      } else if (this.name==='coin' || this.name==='react') {
+        p5.tint(255, this.alpha); 
+        p5.image(this.img[0], this.x, this.y, this.width, this.height);
+        p5.tint(255, 255); 
+        this.alpha>0 ? this.alpha-=5 : round.obstacles=[];
       } else {
+        p5.tint(255, this.alpha); 
         p5.image(this.img, this.x, this.y, this.width, this.height);
+        p5.tint(255, 255); 
+        this.alpha>0 ? this.alpha-=5 : round.obstacles=[];
       }
     }
   }  
@@ -65,7 +121,7 @@ const Game = () => {
         }
         drawFurniture() {
           p5.image(this.item, this.x, height-this.item.height);
-          if (playGame) {
+          if (playGame && !round.over) {
             this.x -= 3;
           }
         }
@@ -74,14 +130,15 @@ const Game = () => {
     //class Player
     class Player {
         constructor() {
-          this.gravity = 0.7;
-          this.speed = 9;
+          this.gravity = 0.85;
+          this.speed = 13;
           this.jumps = 0;
           this.x = 0.3*width;
           this.caffeine = 100;
           this.coffees = 3;
           this.points = 0;
           this.dead = false;
+          this.won = false;
         }
         setupPlayer() {
           this.y = height - pRun.height;
@@ -90,16 +147,18 @@ const Game = () => {
         }
         jump() {
           this.jumps += 1;
-          if (this.jumps < 3) {
+          if (this.jumps < 2) {
             // jumpSound.play();
-            this.speed = -13 ;
+            this.speed = -15.5;
           }
         }
         drawPlayer() {
-          this.caffeine-=0.1;
+          if (!this.won) {
+            this.caffeine-=0.1;
+          }
           //to optimize
           this.speed += this.gravity;
-            this.y += this.speed;
+          this.y += this.speed;
             if (this.y >= height - pRun.height) {
               this.y = height - pRun.height;
               this.jumps = 0;
@@ -115,6 +174,9 @@ const Game = () => {
           } else if (this.jumps===0 && this.caffeine<=0 && round.deadCounter<28) {
             round.deadCounter++;
             p5.image(deadAnimation[Math.floor(round.deadCounter/2) % 14], 0.3*width, height-48, 60, 48);
+          } else if (this.won) {
+            p5.image(pIdle, 0.3*width-4, height-pIdle.height*2, pIdle.width*2, pIdle.height*2);
+            round.over = true;
           } else if (!this.dead) {
             p5.image(pRun, this.x, this.y, this.width, this.height);
           }
@@ -125,7 +187,14 @@ const Game = () => {
           p5.noStroke();
           p5.textFont(VT323);
           p5.textAlign(p5.LEFT);
+          p5.fill(21, 67, 96);
           p5.text('caffeine', 3, 15);
+          p5.textAlign(p5.RIGHT);
+          p5.text('points', width-150, 15);
+          p5.textSize(24);
+          p5.text(this.points, width-150, 35);
+          p5.textAlign(p5.LEFT);
+          p5.textSize(18);
         }
         drawCoffee() {
           for (let i=0; i<this.coffees; i++) {
@@ -152,23 +221,27 @@ const Game = () => {
           this.animationCounter = 0;
           this.deadCounter = 0;
           this.ready = false;
+          this.over = false;
         }
         drawRound() {
           p5.clear();
           p5.frameRate(30);
           p5.textSize(18);
           p5.textAlign(p5.CENTER, p5.CENTER);
-          if (p5.frameCount % 270 === 0) {
+          if (p5.frameCount % 250 === 0) {
             let index = Math.floor(p5.random(4, furnitureArray.length));
             this.furniture.push(new Furniture(index, width));
           }
           this.furniture.forEach((office) => {
             office.drawFurniture();
           }); 
+          this.messages.forEach((message) => {
+            message.drawText();
+          });
               //randomizing obstacles
-              if (p5.frameCount % 85 === 0) {
+              if (p5.frameCount % 65 === 0) {
                 let randomY = p5.random(40, height - 40);
-                let randomO = Math.floor(p5.random(0, 3));
+                let randomO = Math.floor(p5.random(0, objectArray.length));
                 this.obstacles.push(new Obstacle(randomY,randomO));
               }
               this.obstacles.forEach((obstacle) => {
@@ -177,12 +250,13 @@ const Game = () => {
               });
               this.obstacles = this.obstacles.filter((obstacle) => {
                 if (obstacle.checkCollisionXY()) {
-                  console.log(obstacle.name);
+                  round.player.points+=obstacle.points;
+                  console.log(obstacle.name, obstacle.points);
                   if (obstacle.name==='coffee') {
                     this.player.coffees++;
                     this.player.drawCoffee();
                   }
-                  //this.messages.push(new CollisionText(obstacle.name, obstacle.message));
+                  this.messages.push(new CollisionText(obstacle.name, obstacle.message));
                   return false;
                 } else {
                   return true;
@@ -192,22 +266,20 @@ const Game = () => {
           this.player.drawCoffee();
           this.player.drawPlayer();
         }
-        endGame(option) {
+        endGame(option, message) {
           p5.noStroke();
-          p5.fill(127, 179, 213);
-          p5.rect(50, 50, width-100, height-100);
+          p5.fill(255);
+          p5.rect(width/2-180, height/2-70, 360, 140);
           //p5.textFont(this.font2);
           p5.textAlign(p5.CENTER, p5.CENTER);
-          p5.fill(0);
+          p5.fill(21, 67, 96);
           p5.textSize(24);
-          p5.text('GAME OVER.', width/2, height/2-30)
+          p5.text(option, width/2, height/2-30)
           p5.textSize(18);
-          p5.text(option, width/2, height/2+30)
+          p5.text(message, width/2, height/2+30)
         }
         startGame() {
-          p5.noStroke();
-          p5.fill(127, 179, 213);
-          p5.rect(0, 0, width, height);
+          p5.clear();
           this.furniture.forEach((piece) => {
             piece.drawFurniture();
           }); 
@@ -238,12 +310,12 @@ const Game = () => {
             p5.text('*gulp*', width/2, height/2+10)
           } else if (this.ready) {
             p5.textSize(20);
-            p5.text(`ready to roll! \n *press SPACEBAR to jump*\n*press C to drink more coffee.*`, width/2, height/2);
+            p5.text(`READY TO ROLL \n collect 100 points to win \n \n *press SPACEBAR to jump*\n*press C to drink more coffee.*`, width/2, height/2);
           }
         }
       }
 //game variables
-   const width=p5.windowWidth;
+   const width=0.9*p5.windowWidth;
    const height=200;
    const round = new Round();
    let drinkCoffee=false;
@@ -254,6 +326,7 @@ const Game = () => {
    let office0, office1, office2, office3, office4, aloe, coffee, copier, desk, exitdoor, stapler;
    //collectibles
    let coin0, coin1, coin2, coin3;
+   let react0, react1, react2, react3;
    //spritesheets and json
    let coffeeData, coffeeSpritesheet, transformData, transformSpritesheet, deadData, deadSpritesheet;
    //animation arrays
@@ -282,6 +355,10 @@ const Game = () => {
        coin1 = p5.loadImage('./coin/c2.png');
        coin2 = p5.loadImage('./coin/c3.png');
        coin3 = p5.loadImage('./coin/c4.png');
+       react0 = p5.loadImage('./react/react0.png');
+       react1 = p5.loadImage('./react/react1.png');
+       react2 = p5.loadImage('./react/react2.png');
+       react3 = p5.loadImage('./react/react3.png');
        office0 = p5.loadImage('./office/office0.png');
        office1 = p5.loadImage('./office/office1.png');
        office2 = p5.loadImage('./office/office2.png');
@@ -296,13 +373,22 @@ const Game = () => {
        furnitureArray=[copier, desk, aloe, exitdoor, office0, office1, office2, office3, office4];
        objectArray=[
          {name:'coin', img: [coin0, coin1, coin2, coin3], points: 10, message: '+10'},
-         {name:'coin', img: [coin0, coin1, coin2, coin3], points: 15, message: '+15'},
+         {name:'react', img: [react0, react1, react2, react3], points: 25, message: '+25 for react!'},
+         {name:'coin', img: [coin0, coin1, coin2, coin3], points: 7, message: '+9'},
+         {name:'stapler', img: stapler, points: -20, message: 'you got hit by a stapler!  -20'},
+         {name:'coin', img: [coin0, coin1, coin2, coin3], points: 7, message: '+8'},
+         {name:'coin', img: [coin0, coin1, coin2, coin3], points: 7, message: '+7'},
+         {name:'stapler', img: stapler, points: -10, message: 'you got hit by a stapler!  -10'},
          {name:'coffee', img: coffee, points: 0, message: '*coffee collected*'},
          {name:'coin', img: [coin0, coin1, coin2, coin3], points: 1, message: '+1'},
+         {name:'coin', img: [coin0, coin1, coin2, coin3], points: 1, message: '+2'},
+         {name:'react', img: [react0, react1, react2, react3], points: 25, message: '+25 for react!'},
          {name:'coin', img: [coin0, coin1, coin2, coin3], points: 3, message: '+3'},
-         {name:'stapler', img: stapler, points: -10, message: 'you got hit by a stapler!'},
+         {name:'stapler', img: stapler, points: -10, message: 'you got hit by a stapler!  -10'},
+         {name:'coin', img: [coin0, coin1, coin2, coin3], points: 1, message: '+4'},
          {name:'coin', img: [coin0, coin1, coin2, coin3], points: 5, message: '+5'},
-         {name:'coin', img: [coin0, coin1, coin2, coin3], points: 20, message: '+20'}
+         {name:'stapler', img: stapler, points: -10, message: 'you got hit by a stapler!  -10'},
+         {name:'coffee', img: coffee, points: 0, message: '*coffee collected*'}
         ];
        // jumpSound = loadSound("assets/sound/jump.wav");
        // deadSound = loadSound("assets/sound/dead.wav");
@@ -344,9 +430,14 @@ const Game = () => {
         round.drawRound();
       if (round.player.caffeine<0 && round.player.dead) {
           //deadSound.play();
-          round.endGame('You ran out of caffeine and collapsed. \n However, you can still hire Gosha.');
-          p5.noLoop();
+          round.endGame('GAME OVER.', 'You ran out of caffeine and collapsed. \n However, you can still hire Gosha.');
+          // p5.noLoop();
           console.log('You died.');
+        } else if (round.player.points>=100 && round.player.jumps===0) {
+          round.player.won=true;
+          //deadSound.play();
+          round.endGame('YOU WON.', 'You acquired a voucher to hire Gosha. \n Contact me to redeem your voucher.');
+          console.log('You won.');
         }
       } else {
         round.startGame();
