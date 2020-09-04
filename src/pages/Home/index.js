@@ -13,6 +13,7 @@ export default function Home() {
             <Navbar />
             <Mid />
             <Footer />
+            <Link to="/login" className="login-link">⇥ Enter.</Link>
         </div>
     );
 }

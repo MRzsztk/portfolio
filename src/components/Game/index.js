@@ -78,7 +78,7 @@ const Game = () => {
     }
     drawObstacle() {
       if (!round.over) {
-        this.x -= 5;
+        this.x -= 7;
         this.yMod=0;
           if (this.frames%20<10) {
             this.yMod=-(10-this.frames%20);
@@ -90,9 +90,9 @@ const Game = () => {
           p5.image(this.img[Math.floor(this.frames/3)%4], this.x, this.y, 25, 25);
           this.frames++;
         } else if (this.name==='stapler') {
-            this.x-=7; 
+            this.x-=9+round.player.points/15; 
             //this.y+=0.05*this.yMod;
-            p5.image(this.img, this.x, this.y, this.width, this.height);
+            p5.image(this.img, this.x, this.y, this.width*this.points/-10, this.height*this.points/-10);
             //this.frames++;
         } else {
           this.y+=0.15*this.yMod;
@@ -122,7 +122,7 @@ const Game = () => {
         drawFurniture() {
           p5.image(this.item, this.x, height-this.item.height);
           if (playGame && !round.over) {
-            this.x -= 3;
+            this.x -= 5;
           }
         }
       }
@@ -228,7 +228,7 @@ const Game = () => {
           p5.frameRate(30);
           p5.textSize(18);
           p5.textAlign(p5.CENTER, p5.CENTER);
-          if (p5.frameCount % 250 === 0) {
+          if (p5.frameCount % 150 === 0) {
             let index = Math.floor(p5.random(4, furnitureArray.length));
             this.furniture.push(new Furniture(index, width));
           }
@@ -239,7 +239,7 @@ const Game = () => {
             message.drawText();
           });
               //randomizing obstacles
-              if (p5.frameCount % 65 === 0) {
+              if (p5.frameCount % 35 === 0) {
                 let randomY = p5.random(40, height - 40);
                 let randomO = Math.floor(p5.random(0, objectArray.length));
                 this.obstacles.push(new Obstacle(randomY,randomO));
@@ -317,7 +317,7 @@ const Game = () => {
 //game variables
    const width=0.9*p5.windowWidth;
    const height=200;
-   const round = new Round();
+   let round;
    let drinkCoffee=false;
    let playGame=false;
    //player gifs and png
@@ -372,10 +372,11 @@ const Game = () => {
        stapler = p5.loadImage("./objects/stapler.png");
        furnitureArray=[copier, desk, aloe, exitdoor, office0, office1, office2, office3, office4];
        objectArray=[
+         {name:'stapler', img: stapler, points: -15, message: 'you got hit by a heavy stapler!  -15'},
          {name:'coin', img: [coin0, coin1, coin2, coin3], points: 10, message: '+10'},
          {name:'react', img: [react0, react1, react2, react3], points: 25, message: '+25 for react!'},
          {name:'coin', img: [coin0, coin1, coin2, coin3], points: 7, message: '+9'},
-         {name:'stapler', img: stapler, points: -20, message: 'you got hit by a stapler!  -20'},
+         {name:'stapler', img: stapler, points: -20, message: 'you got hit by a really big stapler!  -20'},
          {name:'coin', img: [coin0, coin1, coin2, coin3], points: 7, message: '+8'},
          {name:'coin', img: [coin0, coin1, coin2, coin3], points: 7, message: '+7'},
          {name:'stapler', img: stapler, points: -10, message: 'you got hit by a stapler!  -10'},
@@ -398,6 +399,7 @@ const Game = () => {
      p5.createCanvas(0.9*p5.windowWidth, 200);
      p5.background("#7FB3D5");
      p5.textFont(VT323);
+     round = new Round();
      round.player.setupPlayer();
      round.furniture.push(new Furniture(0, 0.05*width));
      round.furniture.push(new Furniture(1, 0.05*width+2*copier.width));
@@ -405,8 +407,6 @@ const Game = () => {
      round.furniture.forEach((piece) => {
       piece.drawFurniture();
     }); 
-     console.log(round.furniture)
-     //console.log(round.player.y)
      for (let i = 0; i < coffeeData.frames.length; i++) {
        let pos = coffeeData.frames[i].position;
        let img = coffeeSpritesheet.get(pos.x, pos.y, pos.w, pos.h);
@@ -431,7 +431,7 @@ const Game = () => {
       if (round.player.caffeine<0 && round.player.dead) {
           //deadSound.play();
           round.endGame('GAME OVER.', 'You ran out of caffeine and collapsed. \n However, you can still hire Gosha.');
-          // p5.noLoop();
+          p5.noLoop();
           console.log('You died.');
         } else if (round.player.points>=100 && round.player.jumps===0) {
           round.player.won=true;
@@ -446,17 +446,17 @@ const Game = () => {
 
    p5.keyPressed = () => {
        console.log(p5.keyCode);
-       if (p5.keyCode === 67 && !playGame) {
+       if (p5.keyCode === 67 && !playGame && !round.over) {
            console.log('drinking coffee...')
            drinkCoffee=true;
          }
-         if (p5.keyCode === 32 && !playGame && drinkCoffee) {
+         if (p5.keyCode === 32 && !playGame && drinkCoffee && !round.over) {
            playGame=true;
          }
-         if (p5.keyCode === 32 && playGame && drinkCoffee) {
+         if (p5.keyCode === 32 && playGame && drinkCoffee &&!round.over) {
            round.player.jump();
          }
-         if (p5.keyCode === 67 && playGame) {
+         if (p5.keyCode === 67 && playGame &&!round.over) {
            console.log('*gulp*');
            round.player.useCoffee();
          }

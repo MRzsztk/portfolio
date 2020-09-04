@@ -10,10 +10,8 @@ export default function Navbar() {
         <header className="navbar">
             <img className="logo" src={Logo} alt="MRzsztk_logo" />
             <div className="nav-container">
+            <Link className="nav-link" to={"/logout"}>log out.</Link>
             <Link className="nav-link" to={"/"}>home</Link>
-            <Link className="nav-link" to={"/posts"}>blog</Link>
-            <Link className="nav-link" to={"/about"}>about</Link>
-            <Link className="nav-link" to={"/contact"}>contact</Link>
             </div>
         </header>
     );

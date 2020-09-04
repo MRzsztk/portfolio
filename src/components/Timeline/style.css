@@ -1,0 +1,29 @@
+.timeline {
+    margin-bottom: 25px;
+    width: 100%;
+    min-height: calc(100vh - 95px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #7FB3D5;
+    /* font-family: 'VT323', monospace; */
+    color: #143951;
+}
+
+.timeline-container {
+    width: 60%;
+    height: 100%;
+    padding: 30px 100px;
+    background: rgba(212, 230, 241, 0.1);
+}
+
+.post-container {
+    margin-bottom: 40px;
+}
+
+.post-title {
+    font-family: 'VT323', monospace;
+    font-size: 1.5em;
+    color: #143951;
+}
