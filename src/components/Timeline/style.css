@@ -13,17 +13,34 @@
 
 .timeline-container {
     width: 60%;
-    height: 100%;
+    height: calc(100vh - 100px);
+    overflow: scroll;
     padding: 30px 100px;
     background: rgba(212, 230, 241, 0.1);
 }
 
 .post-container {
-    margin-bottom: 40px;
+    margin: 10px 0 20px 0;
+    /* margin-bottom: 30px; */
+}
+
+.post-container hr {
+    margin-top: 20px;
+    border: 0;
+    border-bottom: 1px dashed #497ea1;
+    background: #143951;
 }
 
 .post-title {
     font-family: 'VT323', monospace;
     font-size: 1.5em;
+    padding: 0 5px 5px 5px;
+    color: #143951;
+}
+
+.post-date {
+    margin-left: 5px;
+    font-family: 'VT323', monospace;
+    padding: 5px;
     color: #143951;
 }

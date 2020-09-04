@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import Navbar from "../../components/Navbar";
+import NavbarIn from "../../components/Navbar_IN";
 import Footer from "../../components/Footer";
-import Timeline from "../../components/Timeline";
+import PostEdit from "../../components/PostEdit";
 import api from "../../services/api";
 
 import "./style.css";
@@ -22,14 +22,13 @@ export default function AddPost() {
             history.push('/login')
         }
     }, [token])
+
     return(
         <div className="page">
-            <Navbar />
-            <p>the spot to add the editor</p>
-            <p>my token: {token}</p>
-            <Link to={'/logout'}>Log out.</Link>
-            <Timeline />
+            <NavbarIn />
+            <PostEdit />
             <Footer />
+            <Link className="login-link" to={'/logout'}>Log out.</Link>
         </div>
     );
 }

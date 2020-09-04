@@ -14,6 +14,7 @@ export default function Blog() {
             <Navbar />
             <Timeline />
             <Footer />
+            <Link to="/login" className="login-link">⇥ Enter.</Link>
         </div>
     );
 }

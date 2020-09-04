@@ -30,9 +30,10 @@ useEffect(() => {
       <div className="timeline-container">
         {posts.map(post => (
             <div key={post._id} className="post-container">
-                <h2 className="post-title">{post.title}</h2>
-                <div className="post-content">
-                <p>{post.content}</p>
+                <i className="post-date smalltext">{post.createdAt.split('T')[0]}</i>
+                <h2 className="post-title margin-5">{post.title}</h2>
+                <div className="post-content margin-5">
+                <p className="margin-5">{post.content}</p>
                 </div>
                 <hr />
             </div>

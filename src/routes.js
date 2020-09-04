@@ -11,6 +11,7 @@ import Blog from "./pages/Blog";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import AddPost from "./pages/AddPost";
+import Messages from "./pages/Messages";
 
 export default function Routes() {
     return (
@@ -22,6 +23,7 @@ export default function Routes() {
             <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
             <Route path="/posts/create" exact component={AddPost}/>
+            <Route path="/contact/messages" exact component={Messages} />
         </BrowserRouter>
     );
 }

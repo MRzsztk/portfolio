@@ -12,6 +12,7 @@ export default function About() {
             <Navbar />
             <div>This is the About page.</div>
             <Footer />
+            <Link to="/login" className="login-link">⇥ Enter.</Link>
         </div>
     );
 }
