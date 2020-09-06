@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://mrzsztk-server-efehvbyyl.vercel.app'
+    baseURL: 'https://whispering-hamlet-55933.herokuapp.com/'
 });
 
 export default api;
