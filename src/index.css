@@ -18,6 +18,7 @@ code {
   flex-direction: column;
   position: relative;
   height: 100vh;
+  overflow: hidden;
 }
 
 .login-link {
@@ -28,6 +29,13 @@ code {
   color: #D4E6F1;
   font-family: 'VT323', monospace;
   font-size: 0.85em;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-link {
+      font-size: 11px;
+      bottom: 6.5px;
+  }
 }
 
 .VT323 {

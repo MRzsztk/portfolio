@@ -1,8 +1,9 @@
 .slot {
-    margin: 20px;
-    padding: 20px;
+    margin: 20px 10px;
+    padding: 20px 10px;
     width: 25%;
-    height: 20vh;
+    min-width: 235px;
+    height: 22vh;
     display: flex;
     flex-direction: column;
     align-items: center;

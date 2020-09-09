@@ -31,10 +31,11 @@ export default function Login() {
     }
 
     return (<>
+    <div className="page">
         <Navbar />
         <div className="login">
-            <h3 className="">Enter administrative zone</h3>
             <form className="login-form">
+                <h3 className="margin-5">Enter administrative zone</h3>
                 <input type="text" className="" placeholder="username" required onChange={(e) => setUsername(e.target.value)} />
                 <input type="password" className="" placeholder="password" required onChange={(e) => setPassword(e.target.value)} />
                 <button className="btn-login" type="button" onClick={() => handleLogin()}>LOG IN</button>
@@ -42,5 +43,6 @@ export default function Login() {
             </form>
         </div>
         <Footer />
+    </div>  
     </>);
 }

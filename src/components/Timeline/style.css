@@ -44,3 +44,10 @@
     padding: 5px;
     color: #143951;
 }
+
+
+@media only screen and (max-width: 768px) {
+    .timeline-container {
+        width: 80%;
+    }
+}

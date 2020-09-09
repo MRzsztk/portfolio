@@ -7,15 +7,13 @@
     justify-content: space-around;
     align-items: center;
     background-color: #7FB3D5;
-    /* font-family: 'VT323', monospace; */
     color: #143951;
 }
 
 .about-container {
-    /* margin-top: 30px; */
     width: 60%;
     height: calc(100vh - 95px);
-    /* overflow: scroll; */
+    overflow: scroll;
     padding: 40px 100px;
     background: rgba(212, 230, 241, 0.1);
     text-align: left;
@@ -35,4 +33,10 @@
 
 .list-img {
     height: 18px;
+}
+
+@media only screen and (max-width: 768px) { 
+    .about-container {
+        width: 85%;
+    }
 }

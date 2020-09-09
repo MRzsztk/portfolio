@@ -1,6 +1,15 @@
-.navbar{
+.navbar {
     height: 70px;
     width: 100%;
+    background-color: #1A5276;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    width: 60%;
+    padding-left: 200px;
     position: relative;
     background-color: #1A5276;
     display: flex;
@@ -11,12 +20,11 @@
 .logo {
     height: 55px;
     position: absolute;
-    left: 100px;
+    left: 0px;
 }
 
 .nav-container {
     display: flex;
-    margin-right: 100px;
 }
 
 .nav-link {
@@ -25,3 +33,36 @@
     padding: 20px;
     text-decoration: none;
 }
+
+@media only screen and (max-width: 768px) { 
+    .navbar {
+        height: 110px;
+    }
+
+    .nav {
+        width: 100%;
+        padding: 5px;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .logo {
+        height: 35px;
+        position: absolute;
+        left: 7px;
+        top: 10px;
+    }
+    
+    .nav-container {
+        margin-top: 50px;
+        min-width: 65%;
+        justify-content: space-around;
+    }
+    
+    .nav-link {
+        font-size: 1.2em;
+        color: #D4E6F1;
+        padding: 0 10px 10px 10px;
+        text-decoration: none;
+    }
+  }

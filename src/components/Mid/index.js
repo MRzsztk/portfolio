@@ -1,4 +1,5 @@
 import React from "react";
+import DeviceIdentifier from "react-device-identifier";
 
 import Welcome from "../Welcome";
 import Slot from "../Slot";
@@ -19,9 +20,11 @@ export default function Main () {
            <Slot title="other stuff." text1="I have also done some electronics along with some ERP stuff." pic={Stack2} />
            <Slot title="effectiveness." text1="I love working overtime, learning new things and I offer some kickass Polish labor!" pic={Muscle} />
            </div>
-           <div className="game-comtainer">
-           <Game />
-           </div>
+           <DeviceIdentifier isDesktop={true}>
+                <div className="game-comtainer">
+                    <Game />
+                </div>
+            </DeviceIdentifier>
         </main>
     );
 }

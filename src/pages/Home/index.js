@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import DeviceIdentifier from "react-device-identifier";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";

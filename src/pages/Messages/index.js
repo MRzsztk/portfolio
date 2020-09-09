@@ -7,12 +7,13 @@ import './style.css';
 import api from "../../services/api";
 
 export default function Messages() {
-  const history = useHistory() //is it necessary??
+  const history = useHistory()
   const [token, setToken] = useState(localStorage.getItem('token'))
   const [error, setError] = useState('')
   const [messages, setMessages] = useState([])
 
 const getMessages = async () => {
+  setMessages([{_id: '00000000', email: "fetching messages...", message: "this might take a few seconds.", createdAt: ""}])
   try {
       const config = {
         headers: { Authorization: `Bearer ${token}` }
@@ -32,13 +33,14 @@ useEffect(() => {
 }, [])
 
 return (<>
+  <div className="page">
     <NavbarIn />
     <div className="timeline">
       <div className="timeline-container">
-      messages
+      <div className='VT323 center'>*** MESSAGES ***</div>
         {messages && messages.map(message => (
             <div key={message._id} className="post-container">
-                <h2 className="post-title">{message.email}</h2>
+                <h3 className="VT323">{message.email}</h3>
                 <div className="post-content">
                 <p>{message.message}</p>
                 <i className="smalltext">{message.createdAt}</i>
@@ -50,5 +52,6 @@ return (<>
       </div>
     <Footer />
     <Link className="login-link" to={'/logout'}>Log out.</Link>
+    </div>
 </>);
   }

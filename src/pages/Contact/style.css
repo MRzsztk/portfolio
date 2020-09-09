@@ -1,22 +1,19 @@
 .contact {
     margin-bottom: 25px;
-    width: 100%;
+    width: 100vw;
     min-height: calc(100vh - 95px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     background-color: #7FB3D5;
-    /* font-family: 'VT323', monospace; */
     color: #143951;
 }
 
 .contact-container {
-    margin-top: 30px;
     width: 60%;
     height: calc(100vh - 95px);
-    /* overflow: scroll; */
-    padding: 40px 100px;
+    padding: 30px 100px;
     background: rgba(212, 230, 241, 0.1);
     text-align: center;
     display: flex;
@@ -68,4 +65,51 @@
     position: absolute;
     left: 23px;
     bottom: -8px;
+}
+
+@media only screen and (max-width: 768px) { 
+    .contact {
+        overflow: scroll;
+    }
+
+    .contact-container {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: calc(100vh - 95px);
+        padding: 10px 20px;
+    }
+
+    .contact-slot {
+        margin: 7px 0 7px 15px;
+        width: 80%;
+        font-size: 0.9em;
+        transition: .3s ease;
+    }
+
+    .linkedin {
+        height: 35px;
+        position: absolute;
+        left: -23px;
+        bottom: 4px;
+    }
+    
+    .github {
+        height: 30px;
+        position: absolute;
+        left: -20px;
+        bottom: 8px;
+    }
+    
+    .fb {
+        height: 26px;
+        position: absolute;
+        left: -18px;
+        bottom: 8px;
+    }
+
+    h2 {
+        margin: 10px;
+        font-size: 0.8em;
+    }
+    
 }

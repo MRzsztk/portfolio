@@ -8,11 +8,12 @@ import "./style.css";
 export default function Navbar() {
     return(
         <header className="navbar">
-            <img className="logo" src={Logo} alt="MRzsztk_logo" />
-            <div className="nav-container">
-            <Link className="nav-link" to={"/posts/create"}>blog mgmt</Link>
-            <Link className="nav-link" to={"/contact/messages"}>see messages</Link>
-            <Link className="nav-link" to={"/"}>home</Link>
+            <div className="nav">
+                <img className="logo" src={Logo} alt="MRzsztk_logo" />
+                <div className="nav-container">
+                    <Link className="nav-link" to={"/posts/create"}>blog mgmt</Link>
+                    <Link className="nav-link" to={"/contact/messages"}>see messages</Link>
+                </div>
             </div>
         </header>
     );
