@@ -16,23 +16,66 @@
     overflow: scroll;
     padding: 40px 100px;
     background: rgba(212, 230, 241, 0.1);
-    text-align: left;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .about-container p {
-    display: flex;
-    flex-direction: column;
     font-size: 1.1em;
-    text-align: left;
+    text-align: center;
     padding: 0 15px 15px 15px;
     margin: 0 15px 0 15px;
 }
 
+.about-container span {
+    font-size: 1.4em;
+}
+
+.about-container hr {
+    margin-top: 20px;
+    border: 1px;
+    border-bottom: 1px dashed #497ea1;
+    background: #143951;
+}
+
 .list-img {
     height: 18px;
+}
+
+.badge {
+    height: 100px;
+}
+
+.certificate {
+    margin: 10px;
+    font-size: 1.4em;
+    text-decoration: none;
+    color: #143951;
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+.project-link {
+    margin: 10px;
+    font-size: 1.15em;
+    text-decoration-color: hsl(298, 38%, 35%);
+    color: #143951;
+}
+
+.project-desc {
+    margin: 7px;
+    font-size: 1em;
+    color: #143951;
+}
+
+.project-stack {
+    margin: 5px;
+    font-size: 0.8em;
+    color: #143951;
 }
 
 @media only screen and (max-width: 768px) { 
