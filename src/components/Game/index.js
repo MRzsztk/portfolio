@@ -422,7 +422,6 @@ const Game = () => {
        let img = deadSpritesheet.get(pos.x, pos.y, pos.w, pos.h);
        deadAnimation.push(img);
      }
-     console.log('game is set up')
    };
  
    p5.draw = () => {
