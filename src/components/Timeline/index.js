@@ -10,7 +10,7 @@ export default function Timeline() {
   const [posts, setPosts] = useState([])
 
 const getPosts = async () => {
-  setPosts([{_id: '00000000', createdAt: '', title: 'fetching blog posts...', content: 'this might take a few seconds.'}])
+  setPosts([{_id: '00000000', createdAt: '', title: 'fetching blog posts...', content: 'this might take a few seconds. If it takes longer than that, click the link again, maybe it fell asleep.'}])
   try {
       const { data } = await api.get("/posts");
       if (data?.hasOwnProperty('error')) {
