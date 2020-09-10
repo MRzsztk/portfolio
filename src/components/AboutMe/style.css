@@ -96,6 +96,10 @@
     text-align: left;
 }
 
+.balmer {
+    width: 250px;
+}
+
 @media only screen and (max-width: 768px) { 
     .about-container {
         width: 85%;

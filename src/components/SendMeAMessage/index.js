@@ -30,7 +30,7 @@ export default function SendMeAMessage() {
 
     return (<>
         <div className="message-container">
-            <p className="VT323 margin-5">Send me a message.</p>
+            <p className="VT323 margin-5"><img src={Mail} alt="envelope" className="icon" /> Send me a message.</p>
             <form className="message-editor margin-5">
                 <input name="email" type="text" className="email-field" placeholder="your email address" required onChange={(e) => setEmail(e.target.value)} />
                 <textarea name="message" wrap="soft" className="message-window margin-5" placeholder="your message" required onChange={(e) => setMessage(e.target.value)} />
