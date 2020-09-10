@@ -19,6 +19,6 @@
 
 @media only screen and (max-width: 768px) {
     .main {
-        overflow: scroll;
+        overflow-y: scroll;
     }  
 }

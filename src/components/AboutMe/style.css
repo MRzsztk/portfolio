@@ -13,7 +13,7 @@
 .about-container {
     width: 60%;
     height: calc(100vh - 95px);
-    overflow: scroll;
+    overflow-y: scroll;
     padding: 40px 100px;
     background: rgba(212, 230, 241, 0.1);
     text-align: center;
