@@ -22,6 +22,8 @@ export default function SendMeAMessage() {
                 return setError(data.error)
             }
             history.push('/contact')
+            setEmail('')
+            setMessage('')
 
         } catch (error) {
             console.log(error)
@@ -32,8 +34,8 @@ export default function SendMeAMessage() {
         <div className="message-container">
             <p className="VT323 margin-5"><img src={Mail} alt="envelope" className="icon" /> Send me a message.</p>
             <form className="message-editor margin-5">
-                <input name="email" type="text" className="email-field" placeholder="your email address" required onChange={(e) => setEmail(e.target.value)} />
-                <textarea name="message" wrap="soft" className="message-window margin-5" placeholder="your message" required onChange={(e) => setMessage(e.target.value)} />
+                <input name="email" type="text" className="email-field" placeholder="your email address" value={email} required onChange={(e) => setEmail(e.target.value)} />
+                <textarea name="message" wrap="soft" className="message-window margin-5" placeholder="your message" value={message} required onChange={(e) => setMessage(e.target.value)} />
                 <button className="margin-5" type="button" onClick={() => handleMessageSubmit()}>SEND IT.</button>
                 {error && <span>{error?.message}</span>}
                 {sent && <span>{sent}</span>}
