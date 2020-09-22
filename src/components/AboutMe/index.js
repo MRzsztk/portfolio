@@ -22,7 +22,12 @@ export default function AboutMe () {
                 <a className="project-link" href="https://restfastpay.vercel.app/"><b>restfastpay</b>.vercel.app</a>
                 <p className="project-desc">A mobile web app for automated restaurant checkout and contactless (mock:) payment accessible through a QR code. Done with Carlos Ziegler.</p>
                 <i className="project-stack">(HTML5, CSS, node.js, MongoDB, React, JSON web token, qrcode.react, lotties)</i>
-                *** 
+                ***
+                <h2 className='title VT323'>waski.net</h2>
+                <a className="project-link" href="https://waskinet-client.vercel.app/"><b>waski.net</b>.vercel.app</a>
+                <p className="project-desc">A prototype for my friend's business' website - an Internet/landline provider, also offering hosting services. The website features an administrator's end, where he can read the messages, write news and manage pricelists.</p>
+                <i className="project-stack">(HTML5, CSS, node.js, MongoDB, React, JSON web token, elbow grease & some free time)</i>
+                ***
                 <h2 className='title VT323'>PlantSwap</h2>
                 <a className="project-link" href="https://plantexchange.herokuapp.com/"><b>plantexchange</b>.herokuapp.com</a>
                 <p className="project-desc">A cuttings exchange platform for plant lovers. Done with Nina Smolnikova.</p>
