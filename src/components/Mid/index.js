@@ -1,7 +1,7 @@
 import React from "react";
 import DeviceIdentifier from "react-device-identifier";
 
-import Welcome from "../Welcome";
+// import Welcome from "../Welcome";
 import Slot from "../Slot";
 import Game from "../Game";
 
@@ -14,11 +14,13 @@ import "./style.css"
 export default function Main () {
     return(
         <main className="main">
-           <Welcome />
+        <div  className="main-title">
+            <h1>This is my <u>very serious</u> web developer portfolio.</h1>
+        </div>
            <div className="slot-container">
            <Slot title="coding." text1="I’m a freshly graduated Full Stack Web Developer." pic={Stack1} />
            <Slot title="other stuff." text1="I have also done some electronics along with some ERP stuff." pic={Stack2} />
-           <Slot title="effectiveness." text1="I love working overtime, learning new things and I offer some kickass Polish labor!" pic={Muscle} />
+           <Slot title="attitude." text1="I love working overtime, learning new things and I offer some kickass Polish labor!" pic={Muscle} />
            </div>
            <DeviceIdentifier isDesktop={true}>
                 <Game />

@@ -5,7 +5,6 @@ import Cat from "../../assets/pixel-cat.png";
 import Coffee from "../../assets/coffee.gif";
 import Rick from "../../assets/rick.gif";
 import Certified from "../../assets/certified.png";
-import Balmer from "../../assets/balmer_curve.png";
 
 import "./style.css"
 
@@ -46,10 +45,6 @@ export default function AboutMe () {
                     <li>  <img className="list-img" src={Rick} alt="rick" /></li>
                     <li>  <img className="list-img" src={Cat} alt="titus" /></li>
                 </ul></div>
-                {/* <br />***<br /><br />
-                <img className="balmer" src={Balmer} alt="balmer-curve" />
-                <br />
-                And I'm very much into science. */}
             </div>
         </div>
     );

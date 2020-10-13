@@ -304,14 +304,14 @@ const Game = () => {
           p5.fill(21, 67, 96);
           if (!drinkCoffee) {
             p5.textSize(20);
-            p5.text('...ever wondered how hard it is to hire a developer? \n Become a HR Manager and find out! \n *PRESS C TO HAVE A COFFEE*', width/2, height/2);
+            p5.text('...ever wondered how hard it is to hire a developer? \n Become a HR Manager and find out! \n\n *press C to have a coffee*', width/2, height/2);
           } 
           else if (drinkCoffee&&!this.ready) {
             p5.textSize(20);
             p5.text('*gulp*', width/2, height/2+10)
           } else if (this.ready) {
             p5.textSize(20);
-            p5.text(`Ready to roll! \n \n *COLLECT 100 POINTS TO WIN* \n *PRESS SPACEBAR TO JUMP & LAUNCH THE GAME*\n*PRESS C TO DRINK MORE COFFEE*`, width/2, height/2);
+            p5.text(`Ready to roll! \n \n *collect 100 POINTS to win* \n *press SPACEBAR to jump*\n*press C to drink more coffee*\n\n...press SPACEBAR to start...`, width/2, height/2);
           }
         }
       }

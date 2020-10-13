@@ -10,6 +10,18 @@
     position: relative;
 }
 
+.main-title {
+    margin-top: 20px;
+    height: calc(75vh - 395px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #143951;
+    font-size: 1em;
+    font-family: 'Permanent Marker', cursive;
+}
+
 .slot-container {
     width: 80%;
     padding: 20px;
@@ -31,5 +43,10 @@
     }
     .slot-container {
         position: static;
+    }
+
+    .main-title {
+        width: 80%;
+        font-size: 0.7em;
     }
 }
