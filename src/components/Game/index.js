@@ -163,15 +163,16 @@ const Game = () => {
               this.y = height - pRun.height;
               this.jumps = 0;
           }
-          if (round.deadCounter>=26) {
+          if (round.deadCounter>=23) {
             p5.image(deadAnimation[12], 0.3*width, height-48, 60, 48);
             this.dead=true;
+            round.over = true;
           }
           if (this.jumps>0 && this.speed<0) {
             p5.image(pJump, this.x, this.y, pJump.width*2, pJump.height*2);
           } else if (this.jumps>0 && this.speed>0) {
             p5.image(pFall, this.x, this.y, pFall.width*2, pFall.height*2);
-          } else if (this.jumps===0 && this.caffeine<=0 && round.deadCounter<28) {
+          } else if (this.jumps===0 && this.caffeine<=0 && round.deadCounter<24) {
             round.deadCounter++;
             p5.image(deadAnimation[Math.floor(round.deadCounter/2) % 14], 0.3*width, height-48, 60, 48);
           } else if (this.won) {
@@ -303,14 +304,14 @@ const Game = () => {
           p5.fill(21, 67, 96);
           if (!drinkCoffee) {
             p5.textSize(20);
-            p5.text('*press C to have a coffee.*', width/2, height/2);
+            p5.text('...ever wondered how hard it is to hire a developer? \n Become a HR Manager and find out! \n *PRESS C TO HAVE A COFFEE*', width/2, height/2);
           } 
           else if (drinkCoffee&&!this.ready) {
             p5.textSize(20);
             p5.text('*gulp*', width/2, height/2+10)
           } else if (this.ready) {
             p5.textSize(20);
-            p5.text(`READY TO ROLL \n collect 100 points to win \n \n *press SPACEBAR to jump*\n*press C to drink more coffee.*`, width/2, height/2);
+            p5.text(`Ready to roll! \n \n *COLLECT 100 POINTS TO WIN* \n *PRESS SPACEBAR TO JUMP & LAUNCH THE GAME*\n*PRESS C TO DRINK MORE COFFEE*`, width/2, height/2);
           }
         }
       }
@@ -430,13 +431,13 @@ const Game = () => {
       if (round.player.caffeine<0 && round.player.dead) {
           //deadSound.play();
           round.endGame('GAME OVER.', 'You ran out of caffeine and collapsed. \n However, you can still hire Gosha.');
-          p5.noLoop();
-          console.log('You died.');
+          // p5.noLoop();
+          // console.log('You died.');
         } else if (round.player.points>=100 && round.player.jumps===0) {
           round.player.won=true;
           //deadSound.play();
           round.endGame('YOU WON.', 'You acquired a voucher to hire Gosha. \n Contact me to redeem your voucher.');
-          console.log('You won.');
+          // console.log('You won.');
         }
       } else {
         round.startGame();
