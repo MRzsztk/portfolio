@@ -21,9 +21,7 @@ export default function Main () {
            <Slot title="effectiveness." text1="I love working overtime, learning new things and I offer some kickass Polish labor!" pic={Muscle} />
            </div>
            <DeviceIdentifier isDesktop={true}>
-                <div className="game-comtainer">
-                    <Game />
-                </div>
+                <Game />
             </DeviceIdentifier>
         </main>
     );

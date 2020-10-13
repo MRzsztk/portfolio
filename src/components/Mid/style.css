@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #7FB3D5;
+    position: relative;
 }
 
 .slot-container {
@@ -15,10 +16,20 @@
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
+    position: absolute;
+    bottom: 200px;
+}
+
+.p5Canvas {
+    position: absolute;
+    bottom: 0px;
 }
 
 @media only screen and (max-width: 768px) {
     .main {
         overflow-y: scroll;
-    }  
+    }
+    .slot-container {
+        position: static;
+    }
 }
